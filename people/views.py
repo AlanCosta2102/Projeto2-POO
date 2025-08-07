@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Aluno, Curso
 from .forms import AlunoForm, CursoForm
 from .mixins import TitleMixin
+from django.db.models import Count, Q
+
 
 from django.views.generic import TemplateView
 
