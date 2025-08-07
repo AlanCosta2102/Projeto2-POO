@@ -1,18 +1,22 @@
 from django.urls import path
-from . import views
+from .views import (
+    DashboardView,
+    ListaAlunosView, CriarAlunoView, EditarAlunoView, ExcluirAlunoView,
+    ListaCursosView, CriarCursoView, EditarCursoView, ExcluirCursoView
+)
 
 urlpatterns = [
-    path('', views.dashboard, name='dashboard'),
-    
-    # URLs para alunos
-    path('alunos/', views.lista_alunos, name='lista_alunos'),
-    path('alunos/novo/', views.criar_aluno, name='criar_aluno'),
-    path('alunos/<int:pk>/editar/', views.editar_aluno, name='editar_aluno'),
-    path('alunos/<int:pk>/excluir/', views.excluir_aluno, name='excluir_aluno'),
-    
-    # URLs para cursos
-    path('cursos/', views.lista_cursos, name='lista_cursos'),
-    path('cursos/novo/', views.criar_curso, name='criar_curso'),
-    path('cursos/<int:pk>/editar/', views.editar_curso, name='editar_curso'),
-    path('cursos/<int:pk>/excluir/', views.excluir_curso, name='excluir_curso'),
+    path('', DashboardView.as_view(), name='dashboard'),
+
+    # Alunos
+    path('alunos/', ListaAlunosView.as_view(), name='lista_alunos'),
+    path('alunos/novo/', CriarAlunoView.as_view(), name='criar_aluno'),
+    path('alunos/<int:pk>/editar/', EditarAlunoView.as_view(), name='editar_aluno'),
+    path('alunos/<int:pk>/excluir/', ExcluirAlunoView.as_view(), name='excluir_aluno'),
+
+    # Cursos
+    path('cursos/', ListaCursosView.as_view(), name='lista_cursos'),
+    path('cursos/novo/', CriarCursoView.as_view(), name='criar_curso'),
+    path('cursos/<int:pk>/editar/', EditarCursoView.as_view(), name='editar_curso'),
+    path('cursos/<int:pk>/excluir/', ExcluirCursoView.as_view(), name='excluir_curso'),
 ]
